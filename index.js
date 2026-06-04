@@ -48,7 +48,7 @@
 
     function formatDate(value) {
       if (!value) return "—";
-      return new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(new Date(${value}T00:00:00));
+      return new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(new Date(`${value}T00:00:00`));
     }
 
     function resetForm() {
@@ -77,7 +77,7 @@
     function renderApplications() {
       const visible = getVisibleApplications();
       if (!visible.length) {
-        applicationsWrap.innerHTML = <div class="empty-state"><strong>${applications.length ? "No matching applications" : "No applications yet"}</strong>${applications.length ? "Try another filter or search term." : "Add your first job application using the form."}</div>;
+        applicationsWrap.innerHTML = `<div class="empty-state"><strong>${applications.length ? "No matching applications" : "No applications yet"}</strong>${applications.length ? "Try another filter or search term." : "Add your first job application using the form."}</div>`;
         return;
       }
 
