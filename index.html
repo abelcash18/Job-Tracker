@@ -1,80 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Job Application Tracker</title>
-<link rel="stylesheet" href="index.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Application Tracker</title>
+    <link rel="stylesheet" href="index.css" />  
 </head>
 <body>
-<div class="bg" aria-hidden="true"></div>
-<main class="app">
-<header>
-<div>
-<p class="eyebrow">AbelTech Solutions</p>
-<h1>Job Application Tracker</h1>
-<p class="subtitle">Track companies, roles, dates, and hiring status. Filter your pipeline and keep everything saved locally in your browser.</p>
-</div>
-</header>
+  <main class="app">
+    <header>
+      <div>
+        <p class="eyebrow">Portfolio project</p>
+        <h1>Job Application Tracker</h1>
+        <p class="subtitle">Track companies, roles, dates, and hiring status. Filter your pipeline and keep everything saved locally in your browser.</p>
+      </div>
+    </header>
 
-<section class="summary" aria-label="Application summary">
-<article class="stat-card" style="--accent: rgba(37, 99, 235, 0.13)"><p class="stat-label">Applied</p><p class="stat-value" id="appliedCount">0</p></article>
-<article class="stat-card" style="--accent: rgba(245, 158, 11, 0.16)"><p class="stat-label">Interview</p><p class="stat-value" id="interviewCount">0</p></article>
-<article class="stat-card" style="--accent: rgba(220, 38, 38, 0.12)"><p class="stat-label">Rejected</p><p class="stat-value" id="rejectedCount">0</p></article>
-<article class="stat-card" style="--accent: rgba(22, 163, 74, 0.14)"><p class="stat-label">Offer</p><p class="stat-value" id="offerCount">0</p></article>
-</section>
+    <section class="summary" aria-label="Application summary">
+      <article class="stat-card" style="--accent: rgba(37, 99, 235, 0.13)"><p class="stat-label">Applied</p><p class="stat-value" id="appliedCount">0</p></article>
+      <article class="stat-card" style="--accent: rgba(245, 158, 11, 0.16)"><p class="stat-label">Interview</p><p class="stat-value" id="interviewCount">0</p></article>
+      <article class="stat-card" style="--accent: rgba(220, 38, 38, 0.12)"><p class="stat-label">Rejected</p><p class="stat-value" id="rejectedCount">0</p></article>
+      <article class="stat-card" style="--accent: rgba(22, 163, 74, 0.14)"><p class="stat-label">Offer</p><p class="stat-value" id="offerCount">0</p></article>
+    </section>
 
-<section class="layout">
-<form class="panel" id="applicationForm">
-<h2 id="formTitle">Add application</h2>
-<input type="hidden" id="applicationId" />
-<div class="field"><label for="companyInput">Company</label><input 
+    <section class="layout">
+      <form class="panel" id="applicationForm">
+        <h2 id="formTitle">Add application</h2>
+        <input type="hidden" id="applicationId" />
+        <div class="field"><label for="companyInput">Company</label><input id="companyInput" type="text" placeholder="Example: Acme Corp" maxlength="80" required /></div>
+        <div class="field"><label for="roleInput">Role</label><input id="roleInput" type="text" placeholder="Example: Frontend Developer" maxlength="90" required /></div>
+        <div class="field">
+          <label for="statusInput">Status</label>
+          <select id="statusInput" required>
+            <option value="applied">Applied</option>
+            <option value="interview">Interview</option>
+            <option value="rejected">Rejected</option>
+            <option value="offer">Offer</option>
+          </select>
+        </div>
+        <div class="field"><label for="dateInput">Date applied</label><input id="dateInput" type="date" required /></div>
+        <div class="button-row">
+          <button class="btn-primary" type="submit" id="saveButton">Save application</button>
+          <button class="btn-ghost" type="button" id="clearButton">Clear</button>
+        </div>
+      </form>
 
-id="companyInput" type="text" placeholder="Example: Acme Corp" maxlength="80" required /></div>
-<div class="field"><label for="roleInput">Role</label><input id="roleInput" type="text" placeholder="Example: Frontend Developer" maxlength="90" required /></div>
-<div class="field">
-<label for="statusInput">Status</label>
-<select id="statusInput" required>
-<option value="applied">Applied</option>
-<option value="interview">Interview</option>
-<option value="rejected">Rejected</option>
-<option value="offer">Offer</option>
-</select>
-</div>
-<div class="field"><label for="dateInput">Date applied</label><input id="dateInput" type="date" required /></div>
-<div class="button-row">
-
-<button class="btn-primary" type="submit" id="saveButton">Save application</button>
-<button class="btn-ghost" type="button" id="clearButton">Clear</button>
-</div>
-</form>
-
-<section>
-<div class="toolbar">
-<div class="filters" aria-label="Filter applications by status">
-<button class="filter-btn active" type="button" data-filter="all">All</button>
-<button class="filter-btn" type="button" data-filter="applied">Applied</button>
-<button class="filter-btn" type="button" data-filter="interview">Interview</button>
-<button class="filter-btn" type="button" data-filter="rejected">Rejected</button>
-<button class="filter-btn" type="button" data-
-
-filter="offer">Offer</button>
-</div>
-<div class="search-wrap">
-<span aria-hidden="true">⌕</span>
-<label class="sr-only" for="searchInput">Search applications</label>
-<input id="searchInput" type="search" placeholder="Search company or role..." />
-</div>
-</div>
-<div class="table-wrap" id="applicationsWrap"></div>
-</section>
-</section>
-</main>
-
+      <section>
+        <div class="toolbar">
+          <div class="filters" aria-label="Filter applications by status">
+            <button class="filter-btn active" type="button" data-filter="all">All</button>
+            <button class="filter-btn" type="button" data-filter="applied">Applied</button>
+            <button class="filter-btn" type="button" data-filter="interview">Interview</button>
+            <button class="filter-btn" type="button" data-filter="rejected">Rejected</button>
+            <button class="filter-btn" type="button" data-filter="offer">Offer</button>
+          </div>
+          <div class="search-wrap">
+            <span aria-hidden="true">⌕</span>
+            <label class="sr-only" for="searchInput">Search applications</label>
+            <input id="searchInput" type="search" placeholder="Search company or role..." />
+          </div>
+        </div>
+        <div class="table-wrap" id="applicationsWrap"></div>
+      </section>
+    </section>
+  </main>
+  
 <footer class="cute-footer">
         <p>© 2026 AbelTech Solutions</p>
     </footer> 
-
-<script src="index.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>

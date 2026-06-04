@@ -1,4 +1,5 @@
-   const STORAGE_KEY = "job_application_tracker_v1";
+
+    const STORAGE_KEY = "job_application_tracker_v1";
     let memoryStore = null;
 
     const applicationForm = document.getElementById("applicationForm");
